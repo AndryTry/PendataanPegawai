@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+	head
+		title Tambah #{ucfirst(collection)} Baru
+		link(rel='stylesheet', href='../../css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href='../../css/style.css')
+		script("src=../../js/jquery.js")
+		script("src=../../js/jquery.mobile-1.4.5.min.js")
+	body
+		#container
+			- var obj = objects
+			form(method='post', action='../../#{collection}/edit/#{obj._id}', data-ajax='false')
+				label(for='nip') Nip
+				input(type='text', name='nip', id='nip', data-clear-btn='true', value='#{obj.nip}')
+				label(for='nama') Nama
+				input(type='text', name='nama', id='nama', data-clear-btn='true', value='#{obj.nama}')
+				label(for='jabatan') Jabatan
+				input(type='text', name='jabatan', id='jabatan', data-clear-btn='true', value='#{obj.jabatan}')
+				label(for='bagian') Bagian
+				input(type='text', name='bagian', id='bagian', data-clear-btn='true', value='#{obj.bagian}')
+				label(for='alamat') Alamat
+				input(type='text', name='alamat', id='alamat', data-clear-btn='true', value='#{obj.alamat}')
+				label(for='gaji') Gaji
+				input(type='text' name='gaji', id='gaji', data-clear-btn='true', value='#{obj.gaji}')
+				input(type='submit', value='Ubah', data-theme='b')

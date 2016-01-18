@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+	head
+		title Tambah #{ucfirst(collection)} Baru
+		link(rel='stylesheet', href='../css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href='../css/style.css')
+		script("src=../js/jquery.js")
+		script("src=../js/jquery.mobile-1.4.5.min.js")
+	body
+		#container
+			form(method='post', action='./', data-ajax='false')
+				label(for='nip') Nip
+				input(type='text', name='nip', id='nip', data-clear-btn='true')
+				label(for='nama') Nama
+				input(type='text', name='nama', id='nama', data-clear-btn='true')
+				label(for='jabatan') Jabatan
+				input(type='text', name='jabatan', id='jabatan', data-clear-btn='true')
+				label(for='bagian') Bagian
+				input(type='text', name='bagian', id='bagian', data-clear-btn='true')
+				label(for='alamat') Alamat
+				input(type='text', name='alamat', id='alamat' data-clear-btn='true')
+				label(for='gaji') Gaji
+				input(name='gaji', id='gaji', data-clear-btn='true')
+				input(type='submit', value='Tambahkan', data-theme='b')

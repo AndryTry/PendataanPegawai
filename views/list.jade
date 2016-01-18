@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+	head
+		title Daftar #{ucfirst(collection)}
+		if numberOfPages == 0
+			- var baseUrl = '../'
+		else
+			- var baseUrl = '../../'
+		link(rel='stylesheet', href=baseUrl+'css/themes/default/jquery.mobile-1.4.5.min.css')
+		link(rel='stylesheet', href=baseUrl+'css/style.css')
+		script(src=baseUrl+'js/jquery.js')
+		script(src=baseUrl+'js/jquery.mobile-1.4.5.min.js')
+		script(type='text/javascript').
+			function doDelete(id){
+				$.ajax({
+					url: '#{baseUrl}#{collection}/#{id}',
+					type: 'DELETE',
+					success: function(){
+						window.location.assign('#{baseUrl}#{collection}/page/1');
+					}
+				});
+			}
+	body
+		#container
+			h3 #{ucfirst(collection)}
+			#main
+				if objects.length > 0
+					table(data-role='table').ui-body-d.ui-shadow.table-stripe.ui-responsive
+						thead
+							tr.ui-bar-d
+								th='No'
+								th='Nip'
+								th='Nama'
+								th='Jabatan'
+								th='Bagian'
+								th='Alamat'
+								th='Gaji'
+								th='Aksi'
+						tbody
+							each obj,index in objects
+								tr
+									td=index+1
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.nip}
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.nama}
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.jabatan}
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.bagian}
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.alamat}
+									td
+										a(href='../pegawai/#{obj._id}', title='Lihat detail', rel='external', style='color:#594;') #{obj.gaji}
+									td
+										a(href='../pegawai/edit/#{obj._id}', title='Ubah data #{obj.nip}', rel='external', style='color:#459;') Ubah
+										&nbsp;|&nbsp;
+										a(href='../pegawai/delete/#{obj._id}', title='Hapus data #{obj.nip}', rel='external', style='color:#954;') Hapus
+				ul#pagination
+					li
+						a(href='../pegawai/new', data-rel='external', data-role='button') Tambah Baru
